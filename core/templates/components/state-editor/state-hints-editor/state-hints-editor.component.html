@@ -20,6 +20,8 @@
                       [disabled]="stateHintsService.displayed.length >= 5">
                 {{getHintButtonText()}}
               </button>
+
+
             </div>
           </div>
           <div *ngIf="stateHintsService.displayed.length > 0">
@@ -51,6 +53,11 @@
                                          [isActive]="index === stateHintsService.getActiveHintIndex()"
                                          (delete)="deleteHint($event)">
                   </oppia-response-header>
+                  <button *ngIf="editabilityService.isEditable()"
+                    class="oppia-hint-delete-button"
+                    (click)="deleteHint({index: index, evt: $event})">
+                      <i class="fa fa-trash" aria-hidden="true"></i>
+                  </button>
                 </a>
 
                 <div *ngIf="stateHintsService.getActiveHintIndex() === index">
